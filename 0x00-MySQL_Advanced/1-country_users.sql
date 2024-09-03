@@ -1,6 +1,6 @@
 -- Create a table with called 'users' with id, email, name country
 -- Country is an enum of three countries
-CREATE TABLE users(
+CREATE TABLE if NOT EXISTS users(
 	id INTEGER NOT NULL AUTO_INCREMENT,
 	email VARCHAR(255) NOT NULL UNIQUE,
 	name VARCHAR(255),
