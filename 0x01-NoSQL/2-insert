@@ -1,5 +1,5 @@
 // Inserts a document in the collection school
-db.createCollection("posts");
-db.posts.insertOne({
+db.createCollection("school");
+db.school.insertOne({
   name: "Holberton School"
 })
