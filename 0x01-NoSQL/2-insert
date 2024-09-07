@@ -1,4 +1,2 @@
 // Inserts a document in the collection school
-db.school.insertOne({
-  name: "Holberton School"
-});
+db.school.insert({name: "Holberton School"});
