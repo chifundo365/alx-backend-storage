@@ -2,7 +2,7 @@
 """ Createsa redis connection """
 import redis
 from uuid import uuid4
-from typing import Union
+from typing import Union, Callable
 
 
 class Cache:
@@ -16,3 +16,18 @@ class Cache:
         key = str(uuid4())
         self._redis[key] = data
         return key
+
+    def get(self, key: str, fn: Callable = None) -> Union[str, int]:
+        """
+        Gets a value of a key in the format specified by the converter fn
+        """
+        value = self._redis.get(key)
+        return fn(value) if fn else value
+
+    def get_str(self, _bytes):
+        """ converts bytes to string """
+        return _bytes.decode('utf-8')
+
+    def get_int(self, _bytes):
+        """ Converts bytes to int """
+        return int(_bytes.decode('utf-8'))
