@@ -24,10 +24,10 @@ class Cache:
         value = self._redis.get(key)
         return fn(value) if fn else value
 
-    def get_str(self, _bytes):
+    def get_str(self, _bytes: bytes) -> str:
         """ converts bytes to string """
         return _bytes.decode('utf-8')
 
-    def get_int(self, _bytes):
+    def get_int(self, _bytes: bytes) => int:
         """ Converts bytes to int """
         return int(_bytes.decode('utf-8'))
