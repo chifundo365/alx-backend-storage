@@ -28,6 +28,6 @@ class Cache:
         """ converts bytes to string """
         return _bytes.decode('utf-8')
 
-    def get_int(self, _bytes: bytes) => int:
+    def get_int(self, _bytes: bytes) -> int:
         """ Converts bytes to int """
         return int(_bytes.decode('utf-8'))
