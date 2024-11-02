@@ -19,6 +19,7 @@ def count_calls(method: Callable) -> Callable:
 
 
 def call_history(method: Callable) -> Callable:
+    """ Creates keys of called functions inputs and outputs """
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """ wrapper """
@@ -61,7 +62,7 @@ def replay(fn: Callable) -> None:
         except Exception:
             output = ''
 
-        print('{}*({}) -> {}'.format(function_name, input, output))
+        print('{}(*{}) -> {}'.format(function_name, input, output))
 
 
 class Cache:
