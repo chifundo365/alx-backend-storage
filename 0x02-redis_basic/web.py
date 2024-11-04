@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+"""
+Implents a url client and a decorator func
+"""
 import requests
 import redis
 from functools import wraps
