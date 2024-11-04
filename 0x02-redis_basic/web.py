@@ -17,11 +17,14 @@ def count_url_request_times(func: Callable) -> str:
 
         url = str(*args)
 
-        key = "count:{}".format(url)
-        r.incr(key)
-        r.expire(key, 10)
-        output = func(url)
-        return output
+        r.incr("count:{}".format(url))
+        result = r.get("result:{}".format(url))
+
+        if result:
+            return result.decode('utf-8')
+        result = func(url)
+        r.setex("result:{}".format(url), 10, result)
+        return result
     return wrapper
 
 
