@@ -23,10 +23,13 @@ def count_url_request_times(func: Callable) -> str:
         if result:
             return result.decode('utf-8')
         result = func(url)
-        r.set(f"count{url}", 0)
+        r.set(f"count:{url}", 0)
         r.setex("result:{}".format(url), 10, result)
         return result
     return wrapper
+
+
+
 
 
 @count_url_request_times
