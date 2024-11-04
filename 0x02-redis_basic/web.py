@@ -29,9 +29,6 @@ def count_url_request_times(func: Callable) -> str:
     return wrapper
 
 
-
-
-
 @count_url_request_times
 def get_page(url: str) -> str:
     """ Get content of a requested url """
