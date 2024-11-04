@@ -20,7 +20,6 @@ def count_url_request_times(func: Callable) -> str:
         key = "count:{}".format(url)
         r.incr(key)
         r.expire(key, 10)
-        print("{}:{}".format(key, r.get(key)))
         output = func(url)
         return output
     return wrapper
